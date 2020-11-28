@@ -1,2 +1,3 @@
 # cs
-~> Let's study computer science &lt;~
+
+[CPU](cs%206e26168ec11046a0980b784aaa00a0f8/CPU%2010f399d1ecc14d95882b778695c1891a.md)
