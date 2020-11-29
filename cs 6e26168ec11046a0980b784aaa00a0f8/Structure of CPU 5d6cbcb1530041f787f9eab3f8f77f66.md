@@ -166,6 +166,100 @@ CPU 속의 메모장같은 간단한 기억 장치인 **레지스터**는 명령
 1. 전원을 끄면 메모리에 있는 데이터는 사라지지만 하드디스크에 있는 데이터는 유지된다
 2. 메모리는 CPU에서 직접 읽고 쓸 수 있지만 하드디스크는 직접 읽고 쓸 수 없다.
 
-    ![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.jpg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.jpg)
-
     ![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.svg)
+
+    CPU가 하드디스크의 어드레스를 직접 조작하고 있는 것은 아니다. CPU는 I/O 영역이라는 곳에 있는 '하드디스크 인터페이스'에 제어 신호를 보내고, 이 하드디스크 인터페이스가 하드디스크를 관리하고 있다. 다시말해 CPU와 바로 주고받을 수 있는 건 메모리와 I/O 뿐이다.
+
+3. 메모리가 하드디스크에 비해 처리 속도가 빠르다.
+
+    ![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-2.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-2.svg)
+
+    CPU에 가까울수록 처리 속도는 빠르고 용량은 작다. CPU에서 멀어질수록 처리 속도는 느리고 용량은 크다.
+
+### RAM 영역, ROM 영역, I/O 영역
+
+Address 공간(memory 공간)이란 CPU가 직접 관리하고 있는 공간이다. 
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-3.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-3.svg)
+
+좀 더 정확히 말하면 **Address 공간**(memory 공간)이란 **CPU가 관리하는 외부 메모리의 영역 전체를 가리키는 것이다.** Address 공간에 연결되어 있는 외부 메모리는 **RAM(읽고 쓸 쑤 있는 메모리)과 ROM(읽기 전용 메모리)** 두 종류로 분류할 수 있다. 메모리 공간 속에는 **RAM 영역과 ROM 영역**이 있는 것이다.
+
+**RAM - random access memory**
+
+- 읽기, 쓰기가 가능하다
+- 전원이
+- ex. 메인 메모리
+
+**ROM - read only memory**
+
+- 읽기만 가능하다
+- 전원이 꺼져도 데이터를 저장하고 있다
+- ex. BIOS-ROM
+
+PC 내 마더보드라는 것 안에 ROM이 있다. 그 ROM에는 BIOS(Basic Input/Output System)라는 가장 기초적인 프로그램이 들어 있다. BIOS는 전원이 들어온 직후에 PC 내부의 여러 가지 장치가 정상적인지 확인한다. 그리고 하드디스크 속의 OS를 가동시켜 준다.
+
+RAM 영역과 ROM 영역에 비해 매우 작은 영역이지만, 다음 그림과 같이 I/O 영역이라는 것이 있다. (I/O 영역은 메모리 공간에 없는 경우도 있다)
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-4.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-4.svg)
+
+I/O는 입력/출력의 줄인말로 I/O 영역 안에는 I/O 포트(입출력 포트)가 들어있다. 이 I/O 포트를 경유해서 CPU와 외부 장치(키보드 등)가 직접 연결되어 있다. 키보드가 눌렀을 때 PC가 반응해 주는 건 이런 구조 덕분이다. Address 공간을 이용해서 외부 장치도 CPU의 관리하에 놓고 있는 것이다.
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-5.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-5.svg)
+
+## Interrupt - 인터럽트
+
+CPU가 어떤 계산 처리를 하고 있는 도중에도 마우스나 키보드를 움직이면 바로 반응하는 것은 인터럽트 기능 덕분이다. 또한 인터럽트 기능이 있기 때문에 본래 작업(계산 등)에도 집중할 수 있다. 예를 들어 CPU가 키보드를 눌렀는지 계속 관찰하지 않아도 된다. 그리고 인터럽트한 일이 정리되면 다시 원래 계산 작업으로 돌아갈 수 있게 하는 장치도 중요하다. 즉 계산 도중의 숫자나 프로그램 카운터의 값 등을 어딘가에 기억해두어야 한다는 것이다. 
+
+### Stack & Stack Pointer
+
+interrupt 작업이 끝난 후 다시 원래 작업으로 돌아가기 위해서 기억 메모가 필요하다. 이때 **스택**이라는 기능이 등장한다. 메인 메모리 속의 일부를 확보해두고 기억 장치로 사용하는 기능이다. 
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-6.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-6.svg)
+
+데이터를 저장하는 것을 push라고 하고 데이터를 꺼내는 것을 pop이라고 한다. pop의 경우에는 가장 마지막에 push된 순서대로 데이터를 꺼낼 수 있다. 따라서 원하는 위치의 데이터를 추출할 수는 없다. 
+
+Stack Pointer(SP)라는 register는 가장 마지막의 stack address를 기억한다. 
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-7.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-7.svg)
+
+### 인터럽트의 우선도
+
+**Interrupt mask** 기능을 사용하면 인터럽트를 받아들이지 않게 된다. 리셋은 mask를 하고 있어도 강제로 interrupt가 들어온다. 리셋은 가장 우선도가 높게 설정되어 있기 때문이다. 즉, 리셋은 마스크를 할 수 없는 특수한 인터럽트 입력이다. 전원을 켤 때 항상 리셋이 실행된다. 리셋은 프로그램을 초기화하는 역할을 하는데 바꿔말하면 내부 회로를 초기 상태로 되돌려주는 것이다. 그 덕분에 컴퓨터는 쾌적하게 눈을 뜨게 되고, 정상적으로 동작을 개시할 수 있게되는 것이다. 
+
+우선순위가 가장 높은 인터럽트에 대해서는 마스크를 할 수 없는 구조로 되어 있는 CPU도 있다. 이렇게 마스크가 불가능한 인터럽트 입력을 NMI(Non Maskable Interrupt)라고 한다. 
+
+**Timer Interrupt**는 카운트 다운하여 카운트가 0이 되었을 때 인터럽트를 발생시키는 것이다. 이것을 사용하면 일정한 간격으로 정해진 프로그램을 실행할 수 있게 된다. 
+
+---
+
+### 메모리의 분류
+
+- Rom - Read Only Memory
+    - 메모리의 전원이 공급되지 않아도 내용을 계속 보유함 - 불휘발성 메모리
+    - 읽기만 가능
+- RAM - Random Access Memory
+    - Address의 순서에 관계없이 무작위로 memory address를 지정
+    - 읽기, 쓰기 가능
+    - 휘발성 메모리
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-8.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-8.svg)
+
+### I/O 포트와 GPU
+
+input/output 장치와 CPU의 레지스터나 ALU가 연결되어 있지 않으면 외부에서의 입력을 CPU에 전달할 수 없다. 따라서 외부 메모리를 연결하는 것과 같은 방식으로 내부 버스를 입출력 포트를 통해 외부의 장치와 접속하는 것이다.
+
+모니터는 일반적으로 CPU와 직접 접속되어 있지 않다. 디스플레이 부분은 GPU(Graphics Processing Unit)라는 화상 처리 전용 연산IC를 이용하여 화면을 표현한다. GPU를 사용하는 대규모 시스템용 CPU의 경우 GPU와의 전용 I/O포트를 갖추고 있다.
+
+![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-9.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram-9.svg)
+
+### 클록 주파수, 정확도
+
+클록(클록 주파수)는 일정 주기로 H 레벨과 L 레벨을 반복하는 신호이다. 여기서 주파수란 1초당 반복하는 신호의 수를 뜻한다. 클록은 CPU에서 심장의 고동과 같은 역할을 담당하고 있다. 내부 회로(ALU에 데이터를 래치하거나 프로그램 카운터를 진행시키는 블록)를 가동하기 위해서는 클록이 필수이다. 
+
+클록의 단위는 Hz(헤르츠)이고, 이것은 1초간 몇 회 클록 동작이 반복되고 있는지를 나타내는 값이다. 예를 들어 40MHz는 1초간 4,000만 회의 클록 동작이 반복되고 있다는 뜻이다. 
+
+결국 CPU는 1클록마다 어떤 동작을 하고 있는 것이므로 Hz의 값이 높을수록 클록의 속도가 빨라 CPU의 처리 능력이 뛰어나다고 할 수 있다.
+
+그리고 예를 들어 40MHz라는 주파수가 어느 정도나 엄밀하게 맞는지 그 정도를 나타내는 것을 정확도 라고 한다. 컴퓨터를 통신 기기에 응용하는 경우, 통신 기기끼리 연결하는 신호선은 서로 기준이 되는 클록이 일치하지 않으면 타이밍이 맞지 않게 된다.
+
+### 클록 제너레이터
