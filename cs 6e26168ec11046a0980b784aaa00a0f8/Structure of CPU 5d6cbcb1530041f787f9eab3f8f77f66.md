@@ -154,3 +154,18 @@ CPU 속의 메모장같은 간단한 기억 장치인 **레지스터**는 명령
 또한 기본적으로 program counter의 비트 수(pc가 나타내는 address의 비트 수)는 address bus의 비트 수와 동일하고 address 공간의 비트 수와도 동일하다.
 
 컴퓨터에서 사용되는 cpu의 경우, os에서 실행되는 응용 프로그램에서는 address counter의 비트 수를 프로그래머가 신경 쓸 필요가 없다. 실제로 이용하는 메모리를 어떻게 잃고 쓸 것인지(액세스)는 os에 따라 관리되는 가상 메모리라는 개념에 속한다. 이 가상 메모리와 실제 메모리를 대응시키고 있는 하드웨어를 MMU(memory mapping unit)라고 한다.
+
+## 여러 가지 기억 장치
+
+**Main memory(주 기억 장치) :** 메모리
+
+**보조 기억 장치 :** 하드디스크, SSD
+
+메모리는 책상, 하드디스크는 서랍이라고 생각하자. 책상이 넓으면(메모리 용량이 크면) 동시에 많은 작업을 할 수 있다. 서랍이 크면(하드디스크 용량이 크면) 많은 것을 저장할 수 있다. CPU는 이러한 책상에 앉아서 업무를 하는 사람이라고 생각하면 적절한 비유가 될것이다.
+
+1. 전원을 끄면 메모리에 있는 데이터는 사라지지만 하드디스크에 있는 데이터는 유지된다
+2. 메모리는 CPU에서 직접 읽고 쓸 수 있지만 하드디스크는 직접 읽고 쓸 수 없다.
+
+    ![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.jpg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.jpg)
+
+    ![Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.svg](Structure%20of%20CPU%205d6cbcb1530041f787f9eab3f8f77f66/Untitled_Diagram.svg)
