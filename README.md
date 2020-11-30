@@ -2,6 +2,8 @@
 
 ## CPU
 
+- マンガでわかるCPU
+
 [What does CPU do?](cs%206e26168ec11046a0980b784aaa00a0f8/What%20does%20CPU%20do%20bb96310d8ac348aba9cd3da437af40b3.md)
 
 [Digital operation](cs%206e26168ec11046a0980b784aaa00a0f8/Digital%20operation%200d8fa1de0cc24170bdcad430eacfd3eb.md)
