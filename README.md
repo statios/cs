@@ -2,7 +2,7 @@
 
 ## CPU
 
-- マンガでわかるCPU
+マンガでわかるCPU
 
 [What does CPU do?](cs%206e26168ec11046a0980b784aaa00a0f8/What%20does%20CPU%20do%20bb96310d8ac348aba9cd3da437af40b3.md)
 
