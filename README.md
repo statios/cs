@@ -2,7 +2,7 @@
 
 ## CPU
 
-マンガでわかるCPU
+- マンガでわかるCPU
 
 [What does CPU do?](cs%206e26168ec11046a0980b784aaa00a0f8/What%20does%20CPU%20do%20bb96310d8ac348aba9cd3da437af40b3.md)
 
@@ -13,4 +13,3 @@
 [Operating instructions](cs%206e26168ec11046a0980b784aaa00a0f8/Operating%20instructions%205a5abc5cfb314ab8a6c8a861799cf2a7.md)
 
 [Program](cs%206e26168ec11046a0980b784aaa00a0f8/Program%20efc0a2f1869b4f60b53ff7e158e20473.md)
-
