@@ -1,6 +1,6 @@
 # cs
 
-## CPU - マンガでわかるCPU
+## CPU
 
 [What does CPU do?](cs%206e26168ec11046a0980b784aaa00a0f8/What%20does%20CPU%20do%20bb96310d8ac348aba9cd3da437af40b3.md)
 
@@ -14,7 +14,7 @@
 
 [Microcontroller](cs%206e26168ec11046a0980b784aaa00a0f8/Microcontroller%2085e7d60ce8bc4bc29c1a15bed25b08b1.md)
 
-## OS - OS(オペレ-ティングシステム)の仕組みの繪本 ソフトウェアの動きがわかる9つの扉 / アンク
+## OS
 
 [Basics](cs%206e26168ec11046a0980b784aaa00a0f8/Basics%20f90558771c3a4563a8afa1698b4576e9.md)
 
